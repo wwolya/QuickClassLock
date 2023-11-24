@@ -27,6 +27,7 @@
     <table>
         <tr>
             <th>ID</th>
+            <th>Chat ID</th> <!-- Добавлен новый заголовок для столбца chat_id -->
             <th>Name</th>
             <th>Surname</th>
             <th>Group</th>
@@ -34,6 +35,7 @@
         {% for user_id, user_data in users.items() %}
             <tr>
                 <td>{{ user_id }}</td>
+                <td>{{ user_data['chat_id'] }}</td> <!-- Добавлен вывод chat_id -->
                 <td>{{ user_data['name'] }}</td>
                 <td>{{ user_data['surname'] }}</td>
                 <td>{{ user_data['group'] }}</td>
