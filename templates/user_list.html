@@ -27,18 +27,18 @@
     <table>
         <tr>
             <th>ID</th>
-            <th>Chat ID</th> <!-- Добавлен новый заголовок для столбца chat_id -->
+            <th>Chat ID</th>
             <th>Name</th>
             <th>Surname</th>
             <th>Group</th>
         </tr>
-        {% for user_id, user_data in users.items() %}
+        {% for user in users %}
             <tr>
-                <td>{{ user_id }}</td>
-                <td>{{ user_data['chat_id'] }}</td> <!-- Добавлен вывод chat_id -->
-                <td>{{ user_data['name'] }}</td>
-                <td>{{ user_data['surname'] }}</td>
-                <td>{{ user_data['group'] }}</td>
+                <td>{{ user.id }}</td>
+                <td>{{ user.chat_id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.surname }}</td>
+                <td>{{ user.group }}</td>
             </tr>
         {% endfor %}
     </table>

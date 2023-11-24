@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Log</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        button {
+            font-size: 16px;
+            margin: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Access Log</h1>
+    <table>
+        <tr>
+            <th>Event ID</th>
+            <th>User Info</th> <!-- Добавлен новый столбец для отображения информации о пользователе -->
+            <th>Timestamp</th>
+            <th>Lock Opened</th>
+        </tr>
+        {% if access_logs %}
+            {% for log in access_logs %}
+                <tr>
+                    <td>{{ log.id }}</td>
+                    <td>{{ log.user.name }} {{ log.user.surname }} {{ log.user.group }}</td>
+                    <td>{{ log.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                    <td>{{ 'Yes' if log.lock_opened else 'No' }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="4">No access logs available.</td>
+            </tr>
+        {% endif %}
+    </table>
+    <button onclick="window.location.href='/main'">Back to Main Page</button>
+</body>
+</html>
